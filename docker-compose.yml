@@ -1,0 +1,31 @@
+version: '3.7'
+
+services:
+  queens-app:
+    container_name: queens-app
+    build: .
+    ports:
+      - "5000:5000"
+    env_file:
+      - .env
+    volumes:
+      - .:/code
+    depends_on:
+      - db
+    command: bash -c "flask run && flask db init && flask db migrate"
+  db:
+    image: postgres:12
+    container_name: db
+    restart: always
+    ports:
+      - 5445:5432
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    volumes:
+      - postgres:/var/lib/postgresql/data
+
+volumes:
+  postgres:
+    name: queens-db
