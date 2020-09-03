@@ -2,6 +2,6 @@ language: python
 python:
   - "3.8"
 script:
-  - pip install -r requirements.py
+  - pip install -r requirements.txt
   - python --version
   - pytest
