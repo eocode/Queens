@@ -146,10 +146,6 @@ flask db
 docker-compose exec queens-app pytest
 ```
 
-```bash
-flask db init
-```
-
 ## File structure
 
 * **core** (Flask configurations project)
