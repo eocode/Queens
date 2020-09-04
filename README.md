@@ -5,7 +5,7 @@
     Solve Eight Queens Puzzle
   </p>
   <p align="center">
-    <a href="https://github.com/ActivandoIdeas/queens/blob/master/LICENSE">
+    <a href="https://github.com/eocode/Queens/blob/master/LICENSE">
       	<img src="https://img.shields.io/badge/License-BSD3-blue.svg"  alt="license badge"/>
     </a>
     <a href="https://travis-ci.org/eocode/Queens">
