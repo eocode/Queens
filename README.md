@@ -89,7 +89,8 @@ Active your enviroment
 
 Install dependencies
 
-    $ pip install -r requirements.txt
+    $ pip install -r app/requirements/prod.txt
+    $ pip install -r app/requirements/test.txt
 
 Run the project
 

@@ -1,0 +1,12 @@
+[run]
+source = ./
+omit =
+    app.py
+    */models*
+    */__init__.py
+    */enviroment.py
+    setup.py
+    */tests/*
+    */settings*
+    */extensions*
+    */database*

@@ -33,3 +33,6 @@ def create_app(test_config=None):
         Migrate(app, db)
 
     return app
+
+
+queen = create_app()

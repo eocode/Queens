@@ -1,11 +1,20 @@
 """Test cases for module queens"""
+from modules.queens.utilities.json_array_operations import convert_array_in_json
+from modules.queens.algorithms.queens import Queens
+import json
+from . import app
 
 
-class TestClass:
-    def test_one(self):
-        x = "this"
-        assert "h" in x
+def test_json(app):
+    player = Queens(8)
+    player.create_board()
+    a = player.get_board()
+    j = convert_array_in_json(a)
+    result = True
+    try:
+        json.loads(j)
+        print("Hola")
+    except ValueError as err:
+        result = False
 
-    def test_two(self):
-        x = 5
-        assert 5 == 5
+    assert result

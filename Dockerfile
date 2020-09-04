@@ -6,9 +6,9 @@ ENV FLASK_APP app.py
 ENV FLASK_RUN_HOST 0.0.0.0
 
 RUN apk add --no-cache gcc musl-dev linux-headers postgresql-dev bash
-COPY requirements.txt requirements.txt
+COPY app/requirements/prod.txt app/requirements/prod.txt
 
-RUN pip install -r requirements.txt
+RUN pip install -r app/requirements/prod.txt
 
 EXPOSE 5000
 COPY . .

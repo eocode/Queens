@@ -5,6 +5,3 @@ psycopg2==2.8.5
 flask-migrate==2.5.3
 bootstrap-flask==1.5
 numpy==1.19.1
-pytest==6.0.1
-coverage==5.2.1
-setuptools==50.1.0

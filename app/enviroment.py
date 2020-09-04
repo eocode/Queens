@@ -11,5 +11,5 @@ with open(config_file) as file_name:
     data = file_name.read()
 
 # Write env file
-with open(r"app.py", "w") as file_name:
+with open(r"app/__init__.py", "w") as file_name:
     file_name.write(data)
