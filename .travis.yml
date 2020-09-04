@@ -1,10 +1,16 @@
 language: python
 python:
   - "3.8"
-include:
-  - stage: test
-  script:
-    - pip install -r requirements.txt
-    - python --version
-    - python app/enviroment.py test
-    - pytest
+
+stages:
+  - name: test
+    if: branch = master AND type = push
+
+jobs:
+  include:
+    - stage: test
+    script:
+      - pip install -r requirements.txt
+      - python --version
+      - python app/enviroment.py test
+      - pytest
