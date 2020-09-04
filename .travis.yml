@@ -6,4 +6,7 @@ script:
   - pip install -r requirements.txt
   - python --version
   - python app/enviroment.py test
+  - flask db init
+  - flask db migrate
+  - flask db upgrade
   - pytest
