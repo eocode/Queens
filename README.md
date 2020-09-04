@@ -14,9 +14,6 @@
     <a href="https://codecov.io/gh/eocode/Queens">
         <img src="https://codecov.io/gh/eocode/Queens/branch/master/graph/badge.svg" />
     </a>
-    <a href="https://www.python.org/">
-        <img src="https://img.shields.io/pypi/pyversions/Flask.svg?style=flat-square"  alt="python badge">
-    </a>
   </p>
 </div>
 
