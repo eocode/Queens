@@ -12,7 +12,6 @@ services:
       - .:/code
     depends_on:
       - db
-    command: bash -c "flask run && flask db init && flask db migrate"
   db:
     image: postgres:12
     container_name: db

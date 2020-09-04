@@ -1,7 +1,11 @@
 language: python
 python:
   - "3.8"
-script:
-  - pip install -r requirements.txt
-  - python --version
-  - pytest
+jobs:
+  include:
+    - stage: test
+    script:
+      - pip install -r requirements.txt
+      - python --version
+      - python app/enviroment.py test
+      - pytest

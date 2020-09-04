@@ -13,12 +13,12 @@ queens_view = Blueprint('queens',
 
 @queens_view.route("/")
 def queens_app():
-    abort(404)
+    # abort(404)
     return render_template('index.html', title='Queens')
 
 
 @queens_view.route("/tests")
-def test_app():
+def tests_app():
     n = 8
     player = Queens(n)
     player.create_board()
@@ -29,7 +29,15 @@ def test_app():
     player = Game(n, b, 3)
     create_or_update(player)
 
-    print('JSON')
     print(b)
 
     return render_template('solution.html', title='Queens', board=a)
+
+
+@queens_view.route("/test")
+def test_app():
+    game = Game.query.filter_by(id=8).first()
+    player = Game(8, game.board, 6)
+    player = create_or_update(player)
+
+    return render_template('solution.html', title='Queens', board=player.solutions)

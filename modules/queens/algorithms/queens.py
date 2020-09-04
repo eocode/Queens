@@ -5,7 +5,7 @@ import numpy as np
 
 
 def create_array(n):
-    return [['x' for i in range(n)]]
+    return [['.' for i in range(n)]]
 
 
 class Queens:

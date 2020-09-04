@@ -13,9 +13,12 @@ def create_app(test_config=None):
 
     app.config.from_pyfile('settings_base.py')
 
-    if test_config is None:
+    print("test_config")
+    print(test_config)
+    if test_config is False:
         app.config.from_pyfile('settings_prod.py')
     else:
+        print("Testing")
         app.config.from_pyfile('settings_test.py')
 
     db.init_app(app)
