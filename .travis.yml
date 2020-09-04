@@ -9,6 +9,9 @@ script:
   - flask db init
   - flask db migrate
   - flask db upgrade
-  - pytest
+  - py.test  --cov-report term --cov=app/test/
+
+env:
+- CODECOV_TOKEN=<token>#IF ONLY YOU HAVE A PRIVATE REPOSITORY
 after_success:
   - codecov
