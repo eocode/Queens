@@ -4,7 +4,6 @@ python:
 
 stages:
   - name: test
-    if: branch = master AND type = push
 
 jobs:
   include:
