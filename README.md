@@ -11,6 +11,9 @@
     <a href="https://travis-ci.org/eocode/Queens">
         <img src="https://img.shields.io/travis/eocode/Queens.svg?label=flask-queens" alt="Build Status">
     </a>
+    <a href="https://codecov.io/gh/eocode/Queens">
+        <img src="https://codecov.io/gh/eocode/Queens/branch/master/graph/badge.svg" />
+    </a>
     <a href="https://www.python.org/">
         <img src="https://img.shields.io/pypi/pyversions/Flask.svg?style=flat-square"  alt="python badge">
     </a>
@@ -55,7 +58,7 @@ You can base your next developments on that template or contribute to improve it
 
 * N Queens Problem
 * Dockerized
-* Travis-CI
+* Travis-CI and codecov integration
 * Flask Blueprints
 * Divide envs
 * Extensible
@@ -192,9 +195,10 @@ or only
 pytest
 ```
 
-## Coverage of project
+## Ejecute coverage report
 
 ```bash
+coverage run -m pytest
 coverage report
 coverage html
 ```
