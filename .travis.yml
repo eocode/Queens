@@ -4,9 +4,11 @@ python:
 
 script:
   - pip install -r requirements.txt
-  - python --version
+  - pip install codecov
   - python app/enviroment.py test
   - flask db init
   - flask db migrate
   - flask db upgrade
   - pytest
+after_success:
+  - codecov

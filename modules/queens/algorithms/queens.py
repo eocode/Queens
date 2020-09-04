@@ -5,11 +5,10 @@ import numpy as np
 
 
 def create_array(n):
-    return [['.' for i in range(n)]]
+    return [["." for i in range(n)]]
 
 
 class Queens:
-
     def __init__(self, n):
         self.n = n
         self.board = create_array(n)

@@ -1,3 +1,6 @@
+"""Test cases for module queens"""
+
+
 class TestClass:
     def test_one(self):
         x = "this"

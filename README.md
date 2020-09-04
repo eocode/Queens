@@ -8,6 +8,9 @@
     <a href="https://github.com/ActivandoIdeas/queens/blob/master/LICENSE">
       	<img src="https://img.shields.io/badge/License-BSD3-blue.svg"  alt="license badge"/>
     </a>
+    <a href="https://travis-ci.org/eocode/Queens">
+        <img src="https://img.shields.io/travis/eocode/Queens.svg?label=flask-queens" alt="Build Status">
+    </a>
     <a href="https://www.python.org/">
         <img src="https://img.shields.io/pypi/pyversions/Flask.svg?style=flat-square"  alt="python badge">
     </a>
@@ -42,6 +45,26 @@ You can base your next developments on that template or contribute to improve it
 * Psycopg2
 * Pytest
 * Flask-migrate
+* Bootstrap
+* Pytest
+* Coverage
+* Setuptools
+* Numpy
+
+## Features
+
+* N Queens Problem
+* Dockerized
+* Travis-CI
+* Flask Blueprints
+* Divide envs
+* Extensible
+* PostgreSQL
+
+## Development tools
+
+* Pycharm - IDE
+* Black - Code format
 
 ## How to clone
 
@@ -140,10 +163,39 @@ Show more commands
 flask db
 ```
 
+## Prepare enviroments
+
+Configure for test, execute sqlite db
+
+```bash
+python app/enviroment.py test
+```
+
+Configure for dev or production, execute data in postgresql instance
+
+```bash
+python app/enviroment.py prod
+```
+
 ## Run tests
+
+On Docker
 
 ```bash
 docker-compose exec queens-app pytest
+```
+
+or only
+
+```bash
+pytest
+```
+
+## Coverage of project
+
+```bash
+coverage report
+coverage html
 ```
 
 ## File structure
@@ -154,6 +206,8 @@ docker-compose exec queens-app pytest
   * **settings** (Injectable settings app)
 * **modules** Project modules
   * **queens** (Main blueprint Flask module) 
+* **migrations** (Database version app - Don't tracked)
+* **tests** (Test of project)
 
 ## Preview
 
@@ -161,8 +215,10 @@ Your image project previews
 
 ## How to contribute
 
-* Review our code of conduct
+* See contributting file
+
+https://github.com/eocode/Queens/blob/master/CONTRIBUTTING.md
 
 # License
 
-View in https://github.com/eocode/queens/blob/master/LICENSE
+View in https://github.com/eocode/Queens/blob/master/LICENSE
