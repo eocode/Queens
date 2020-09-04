@@ -3,7 +3,7 @@ python:
   - "3.8"
 
 stages:
-  - name: test
+  - test
 
 jobs:
   include:
