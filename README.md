@@ -17,7 +17,9 @@
   </p>
 </div>
 
-## Description Tasks
+## Description
+
+Problem: https://en.wikipedia.org/wiki/Eight_queens_puzzle
 
 1. Determine all possible solutions for a given N where N ≥ 8 (within 10 mins on a laptop). Bonus points for a higher N where N is the size of the board / number of queens
 2. Iterate over N and store the solutions in postgres using SQLAlchemy
@@ -203,13 +205,28 @@ coverage html
 ## File structure
 
 * **core** (Flask configurations project)
+  * **envs** (Configuration environments)
+  * **requirements** (Project dependencies)
+  * **extensions** (Instance for access to db in modules)
+  * **img** (Images of project)
   * **init** (Base config app)
   * **database** (Settings for SQLAlchemy)
-  * **settings** (Injectable settings app)
+  * **settings** (Injectable settings in app)
 * **modules** Project modules
   * **queens** (Main blueprint Flask module) 
 * **migrations** (Database version app - Don't tracked)
+* **labs** (Codding problem and test solutions to pass in module queens, this folder won't pass for testing)
 * **tests** (Test of project)
+
+## Results of algorithm
+
+<div align="center">
+  <img src="/app/img/res_1.png" alt="15*15 Queens">
+</div>
+
+<div align="center">
+  <img src="/app/img/res_1_time.png" alt="15*15 Queens Time">
+</div>
 
 ## Preview
 

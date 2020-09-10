@@ -6,6 +6,7 @@ omit =
     */__init__.py
     */enviroment.py
     setup.py
+    */labs/*
     */tests/*
     */settings*
     */extensions*
