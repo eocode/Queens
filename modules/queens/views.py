@@ -1,6 +1,5 @@
-from flask import Blueprint, render_template, abort
-from .utilities.json_array_operations import convert_array_in_json
-from .algorithms.queens import Queens
+from flask import Blueprint, render_template
+from .simulation.simulation import Simulation
 from .models import Game
 from .connections.CRUD import create_or_update
 
@@ -15,25 +14,19 @@ queens_view = Blueprint(
 
 @queens_view.route("/")
 def queens_app():
-    # abort(404)
     return render_template("index.html", title="Queens")
 
 
-@queens_view.route("/tests")
-def tests_app():
-    n = 8
-    player = Queens(n)
-    player.create_board()
-    player.print_board()
-    a = player.get_board()
+@queens_view.route("/simulation")
+def simulation_app():
+    n = 4
+    player = Simulation(n)
+    player.start()
+    board = player.get_board()
+    solutions = player.get_solutions()
+    a = player.a
 
-    b = convert_array_in_json(a)
-    player = Game(n, b, 3)
-    create_or_update(player)
-
-    print(b)
-
-    return render_template("solution.html", title="Queens", board=a)
+    return render_template("simulation.html", title="Queens", board=board, solutions=solutions, a=a)
 
 
 @queens_view.route("/test")
@@ -42,4 +35,4 @@ def test_app():
     player = Game(8, game.board, 6)
     player = create_or_update(player)
 
-    return render_template("solution.html", title="Queens", board=player.solutions)
+    return render_template("simulation.html", title="Queens", board=player.solutions)

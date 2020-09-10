@@ -15,7 +15,7 @@ class Game(db.Model):
     id = Column(Integer, primary_key=True, doc="It's the n board or queen")
     solutions = Column(Integer, doc="Number of solutions found")
     board = Column(Text)
-    solved = relationship("Solution", back_populates="game")
+    solved = relationship("Solution", back_populates="simulation")
 
     def __init__(self, id, board, solutions):
         self.id = id
