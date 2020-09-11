@@ -2,7 +2,7 @@
   <img width="64" src="https://image.flaticon.com/icons/svg/862/862737.svg" alt="Queens">
   <h3 align="center">Queens</h3>
   <p align="center">
-    Solve Eight Queens Puzzle
+    Solve N Queens Puzzle
   </p>
   <p align="center">
     <a href="https://github.com/eocode/Queens/blob/master/LICENSE">

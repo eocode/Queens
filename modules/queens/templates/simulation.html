@@ -5,7 +5,7 @@
     <div class="container mt-3">
         <div class="row">
             <div class="col-sm-12">
-                <h1>Board: </h1>
+                <h1>Board for {{ a }}x{{ a }}: </h1>
                 {% for n in board %}
                     <div class="row">
                         <div class="col-sm-{{ board|length }}">
@@ -15,15 +15,25 @@
                         </div>
                     </div>
                 {% endfor %}
-                <h2>Solutions: </h2>
-                {{ a }}
-                {% for n in solutions %}
-                    <div class="row">
-                        <div class="col-sm-{{ solutions|length }}">
-                            {% for r in n %}
-                                {{ r }}
-                            {% endfor %}
+                <h3>{{ solutions.values()|length }} Solutions</h3>
+
+                {% for key, value in solutions.items() %}
+                    <div class="row text-center">
+                        <div class="text-center">
+                            <p>ID Solution: {{ key }}<p/>
                         </div>
+                        {% for n in value %}
+                            <div class="col-sm-12">
+                                {% for r in n %}
+                                    {% if r == 1 %}
+                                        <strong>{{ r }}{{ ' | ' }}</strong>
+                                    {% else %}
+                                        {{ r }}{{ ' | ' }}
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        {% endfor %}
+                        <hr>
                     </div>
                 {% endfor %}
             </div>

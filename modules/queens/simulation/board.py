@@ -10,12 +10,12 @@ class Board:
 
     def __init__(self, n):
         self.n = n
-        self.__board = np.zeros((self.n, self.n))
+        self.__board = np.zeros((self.n, self.n)).astype(int)
         self.__positions = {v: {c: c for c in range(0, self.n)} for v in range(self.n)}
 
     def create_board(self):
         """Create numpy array as a bord chess n*n"""
-        self.__board = np.zeros((self.n, self.n))
+        self.__board = np.zeros((self.n, self.n)).astype(int)
 
     def create_positions(self):
         """Generate dictionary with available positions of game"""

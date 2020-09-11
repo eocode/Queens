@@ -1,4 +1,6 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, redirect
+from .forms import SimulateForm
+from modules.queens.algorithms.nqueens import NQueens
 
 queens_view = Blueprint(
     "queens",
@@ -9,13 +11,19 @@ queens_view = Blueprint(
 )
 
 
-@queens_view.route("/")
+@queens_view.route("/", methods=['GET'])
 def queens_app():
-    return render_template("index.html", title="Queens")
+    form = SimulateForm()
+    return render_template("index.html", title="Queens", form=form)
 
 
-@queens_view.route("/simulation")
+@queens_view.route("/simulation", methods=['POST'])
 def simulation_app():
-    return render_template(
-        "simulation.html", title="Queens", board={}, solutions={}, a=5
-    )
+    form = SimulateForm()
+    if form.validate_on_submit():
+        simulate = NQueens(form.n.data)
+        simulate.solve()
+        return render_template(
+            "simulation.html", title="Queens", board={}, solutions=simulate.get_solutions(), a=form.n.data
+        )
+    return redirect('/')
