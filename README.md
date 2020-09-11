@@ -30,6 +30,7 @@
   - [Dependencies](#dependencies)
   - [Features](#features)
   - [Development tools](#development-tools)
+- [Considerations](#considerations)
 - [How to use](#how-to-use)
   - [Based on a cookiecutter technique](#based-on-a-cookiecutter-technique)
   - [How to clone](#how-to-clone)
@@ -52,10 +53,16 @@ Main view, choise n board and simulate the game, if it has been calculated, the 
   <img src="/app/img/demo.png" alt="Demo Queens">
 </div>
 
-Next view all possible solutions
+All possible solutions paginated, with option to regenerate. (You can improve the algorithm and see the new result)
 
 <div align="center">
   <img src="/app/img/demo_2.png" alt="Demo Queens">
+</div>
+
+See board of processed solutions with your elapsed time, support n queens until 10 mins
+
+<div align="center">
+  <img src="/app/img/demo_3.png" alt="Demo Queens">
 </div>
 
 # The n*n queens problem
@@ -182,6 +189,10 @@ Time in minutes
 
 * Pycharm - IDE
 * Black - Code format
+
+# Considerations
+
+* Coverage > 90%
 
 # How to use
 

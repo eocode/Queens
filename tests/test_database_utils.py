@@ -12,19 +12,6 @@ n = 10
 solutions = 724
 
 
-def test_create_simulation(app):
-    with app.test_request_context("/"):
-        simulation = Simulation(
-            id=n,
-            solutions=solutions,
-            time_start=datetime.now(),
-            time_end=datetime.now(),
-            minutes=0,
-        )
-        a = add(simulation)
-        assert isinstance(a, Simulation)
-
-
 def test_database_create_or_update(app):
     """Create test data in app"""
     with app.test_request_context("/"):
