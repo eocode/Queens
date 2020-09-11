@@ -31,6 +31,7 @@ Problem details: https://en.wikipedia.org/wiki/Eight_queens_puzzle
 - [Project solution](#project-solution)
   - [File structure](#file-structure)
   - [The algorithm](#the-algorithm)
+    - [Steps to solve this](#steps-to-solve-this)
   - [Results of algorithm](#results-of-algorithm)
     - [For 14*14 board](#for-1414-board)
     - [For 15*15 board](#for-1515-board)
@@ -127,6 +128,13 @@ def __n_queens(self, board, col, positions):
                 self.__n_queens(board, col + 1, values)
                 board[row][col] = 0
 ```
+
+### Steps to solve this
+
+* Brute force
+* Minimum conflict
+* Memorization
+* Backtracking
 
 ## Results of algorithm
 
