@@ -192,7 +192,7 @@ Time in minutes
 
 # Considerations
 
-* Coverage > 90%
+* Coverage > 85%
 
 # How to use
 
