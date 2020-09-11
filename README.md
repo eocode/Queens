@@ -1,9 +1,6 @@
 <div align="center">
   <img width="64" src="https://image.flaticon.com/icons/svg/862/862737.svg" alt="Queens">
-  <h3 align="center">Queens</h3>
-  <p align="center">
-    Solve N Queens Puzzle
-  </p>
+  <h3 align="center">NxN Queens Puzzle</h3>
   <p align="center">
     <a href="https://github.com/eocode/Queens/blob/master/LICENSE" target="__blank">
       	<img src="https://img.shields.io/badge/License-BSD3-blue.svg"  alt="license badge"/>
@@ -21,9 +18,16 @@
   </p>
 </div>
 
+Problem details: https://en.wikipedia.org/wiki/Eight_queens_puzzle
+
+1. Determine all possible solutions for a given N where N ≥ 8 (within 10 mins on a laptop). Bonus points for a higher N where N is the size of the board / number of queens
+2. Iterate over N and store the solutions in postgres using SQLAlchemy
+3. Write basic tests that at least verify the number of solutions for a given N match what's online. I recommend using pytest
+4. Docker-ize the solution, so that I can run the code and tests without any assumption of my local setup (including running a postgres instance in docker-compose)
+5. Setup Travis CI (or similar) for your public GitHub repo to run the tests automatically
+
 ## Summary<!-- omit in toc -->
 - [Demo N Queens](#demo-n-queens)
-- [The n*n queens problem](#the-nn-queens-problem)
 - [Project solution](#project-solution)
   - [File structure](#file-structure)
   - [The algorithm](#the-algorithm)
@@ -69,17 +73,6 @@ See board of processed solutions with your elapsed time, support n queens until 
 <div align="center">
   <img src="/app/img/demo_3.png" alt="Demo Queens">
 </div>
-
-# The n*n queens problem
-
-Problem details: https://en.wikipedia.org/wiki/Eight_queens_puzzle
-
-1. Determine all possible solutions for a given N where N ≥ 8 (within 10 mins on a laptop). Bonus points for a higher N where N is the size of the board / number of queens
-2. Iterate over N and store the solutions in postgres using SQLAlchemy
-3. Write basic tests that at least verify the number of solutions for a given N match what's online. I recommend using pytest
-4. Docker-ize the solution, so that I can run the code and tests without any assumption of my local setup (including running a postgres instance in docker-compose)
-5. Setup Travis CI (or similar) for your public GitHub repo to run the tests automatically
-
 
 # Project solution
 
