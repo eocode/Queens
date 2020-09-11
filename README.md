@@ -18,7 +18,7 @@
 </div>
 
 ## Summary<!-- omit in toc -->
-- [Demo of the project](#demo-of-the-project)
+- [Demo N Queens](#demo-n-queens)
 - [The n*n queens problem](#the-nn-queens-problem)
 - [How to use](#how-to-use)
   - [Based on a cookiecutter technique](#based-on-a-cookiecutter-technique)
@@ -40,14 +40,21 @@
   - [Results of algorithm](#results-of-algorithm)
     - [For 14*14 board](#for-1414-board)
     - [For 15*15 board](#for-1515-board)
-- [Preview](#preview)
-  - [How to contribute](#how-to-contribute)
+- [How to contribute](#how-to-contribute)
 - [License](#license)
 
-# Demo of the project
+# Demo N Queens
+
+Main view
 
 <div align="center">
   <img src="/app/img/demo.png" alt="Demo Queens">
+</div>
+
+Solutions view
+
+<div align="center">
+  <img src="/app/img/demo_2.png" alt="Demo Queens">
 </div>
 
 # The n*n queens problem
@@ -321,11 +328,7 @@ Time in minutes
   <img src="/app/img/res_1_time.png" alt="15*15 Queens Time">
 </div>
 
-# Preview
-
-Your image project previews
-
-## How to contribute
+# How to contribute
 
 * See contributting file
 
