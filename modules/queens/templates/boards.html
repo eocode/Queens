@@ -1,0 +1,58 @@
+{% from 'bootstrap/form.html' import render_form %}
+{% extends 'common/base.html' %}
+
+{% block content %}
+
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-sm-12">
+                <hr/>
+                <div class="text-center">
+                    <img width="100" src="https://www.flaticon.es/svg/static/icons/svg/3183/3183991.svg"/>
+                </div>
+                <h2 class="text-center">N*N queens Board Solutions</h2>
+                <hr/>
+                <p class="text-center">Show resolved boards (in max 10m)</p>
+                {% if boards|length == 0 %}
+                    <div class="alert alert-secondary mt-5" role="alert">
+                        Result: <strong>{{ boards|length }}</strong> <br/>
+                        Without solutions
+                    </div>
+                {% else %}
+                    <table class="table table-striped">
+                        <thead class="thead-dark text-center">
+                        <tr>
+                            <th scope="col">N*N</th>
+                            <th scope="col">Solutions</th>
+                            <th scope="col">Elapsed Time to resolve (minutes)</th>
+                            <th scope="col">View</th>
+                        </tr>
+                        </thead>
+                        <tbody class="text-center">
+                        {% for row in boards %}
+                            <tr>
+                                <th scope="row">{{ row.id }}</th>
+                                <td>{{ row.solutions }}</td>
+                                <td>{{ row.minutes }}</td>
+                                <td>
+                                    <form method="POST" action="/simulation">
+                                        {{ form.csrf_token }}
+                                        {{ form.hidden_tag("n") }}
+                                        <input name="n" value={{ row.id }} hidden>
+                                        <input name="page" value="1" hidden>
+                                        <button type="submit" class="btn btn-dark" value="Go">
+                                            View {{ row.id }}x{{ row.id }}
+                                            solutions
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

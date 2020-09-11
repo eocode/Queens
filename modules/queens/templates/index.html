@@ -12,10 +12,17 @@
                 </div>
                 <h2 class="text-center">N*N queens puzzle</h2>
                 <hr/>
-                <form action="/simulation" method="post">
-                    <div class="text-center">
-                        {{ render_form(form, button_map={'submit': 'btn btn-dark'}) }}
-                    </div>
+                <form method="POST" class="text-center" action="/simulation">
+                    {{ form.csrf_token }}
+                    <label class="form-control-label" for="n">Choise n value to simulate board and get all
+                        solutions (in
+                        max 10m)</label>
+                    <input class="form-control" name="n" id="n" required type="text">
+                    <input name="page" value="1" hidden>
+                    <hr/>
+                    <button type="submit" class="btn btn-dark" value="Go">
+                        Start simulation
+                    </button>
                 </form>
                 <hr/>
                 <div class="text-center">

@@ -6,36 +6,79 @@
         <div class="row">
             <div class="col-sm-12">
                 <h1>Board for {{ a }}x{{ a }}: </h1>
-                {% for n in board %}
-                    <div class="row">
-                        <div class="col-sm-{{ board|length }}">
-                            {% for r in n %}
-                                {{ r }}
-                            {% endfor %}
-                        </div>
+                <div class="mb-4">
+                    <form method="POST" action="/simulation">
+                        {{ form.csrf_token }}
+                        {{ form.hidden_tag("n") }}
+                        <input name="n" value={{ a }} hidden>
+                        <input name="page" value="1" hidden>
+                        <input name="repeat" value="1" hidden>
+                        <button type="submit" class="btn btn-dark btn-block" value="Go">
+                            Simulate again
+                        </button>
+                    </form>
+                </div>
+                {% if has_prev or has_next %}
+                    <p class="text-center">Show paginated solutions (10 items for page)</p>
+                {% endif %}
+                <div class="row">
+                    <div class="col-6">
+                        {% if has_prev %}
+                            <form method="POST" action="/simulation">
+                                {{ form.csrf_token }}
+                                {{ form.hidden_tag("n") }}
+                                <input name="n" value={{ a }} hidden>
+                                <input name="page" value={{ prev_num }} hidden>
+                                <button type="submit" class="btn btn-dark btn-block" value="Go">
+                                    Prev
+                                </button>
+                            </form>
+                        {% endif %}
                     </div>
-                {% endfor %}
-                <h3>{{ solutions.values()|length }} Solutions</h3>
+                    <div class="col-6">
+                        {% if has_next %}
+                            <form method="POST" action="/simulation?page={{ next_num }}">
+                                {{ form.csrf_token }}
+                                {{ form.hidden_tag("n") }}
+                                <input name="n" value={{ a }} hidden>
+                                <input name="page" value={{ next_num }} hidden>
+                                <button type="submit" class="btn btn-dark btn-block" value="Go">
+                                    Next
+                                </button>
+                            </form>
+                        {% endif %}
+                    </div>
+                </div>
 
-                {% for key, value in solutions.items() %}
-                    <div class="row text-center">
-                        <div class="text-center">
-                            <p>ID Solution: {{ key }}<p/>
-                        </div>
-                        {% for n in value %}
-                            <div class="col-sm-12">
-                                {% for r in n %}
-                                    {% if r == 1 %}
-                                        <strong>{{ r }}{{ ' | ' }}</strong>
-                                    {% else %}
-                                        {{ r }}{{ ' | ' }}
-                                    {% endif %}
-                                {% endfor %}
-                            </div>
-                        {% endfor %}
-                        <hr>
+                {% if total == 0 %}
+                    <div class="alert alert-secondary mt-5" role="alert">
+                        Result: <strong>{{ total }}</strong> <br/>
+                        Without solutions for this board
                     </div>
-                {% endfor %}
+                {% else %}
+                    <h3>{{ total }} Solutions</h3>
+                    {% for key, value in solutions.items() %}
+                        <div class="row text-center">
+                            <div class="text-center">
+                                <p>ID Solution: {{ key }}<p/>
+                            </div>
+                            {% for n in value %}
+                                <div class="col-sm-12">
+                                    {% for r in n %}
+                                        {% if r == 1 %}
+                                            <strong>{{ r }}{{ ' | ' }}</strong>
+                                        {% else %}
+                                            {{ r }}{{ ' | ' }}
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                            {% endfor %}
+                            <hr>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                <hr/>
+
             </div>
         </div>
     </div>

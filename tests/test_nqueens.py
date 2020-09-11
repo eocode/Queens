@@ -28,6 +28,16 @@ solutions = 724
 
 def test_n_queens(app):
     """Test main route of project"""
-    simulate = NQueens(n)
+    simulate = NQueens(n, False)
     simulate.solve()
-    assert len(simulate.get_solutions()) == solutions
+    assert len(simulate.get_solutions(1)) == solutions
+    assert simulate.is_solved()
+
+
+def test_n_queens_with_persistence(app):
+    """Test main route of project"""
+    with app.test_request_context("/"):
+        simulate = NQueens(n, True)
+        simulate.solve()
+        assert len(simulate.get_solutions(1).items) > 0
+        assert simulate.is_solved()

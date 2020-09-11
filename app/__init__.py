@@ -32,4 +32,4 @@ def create_app(test_config=None):
     return app
 
 
-queen = create_app(test_config=True)
+queen = create_app()

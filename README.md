@@ -26,11 +26,12 @@
   - [Results of algorithm](#results-of-algorithm)
     - [For 14*14 board](#for-1414-board)
     - [For 15*15 board](#for-1515-board)
-- [How to use](#how-to-use)
-  - [Based on a cookiecutter technique](#based-on-a-cookiecutter-technique)
+- [How it is build?](#how-it-is-build)
   - [Dependencies](#dependencies)
   - [Features](#features)
   - [Development tools](#development-tools)
+- [How to use](#how-to-use)
+  - [Based on a cookiecutter technique](#based-on-a-cookiecutter-technique)
   - [How to clone](#how-to-clone)
   - [Development configuration](#development-configuration)
   - [Use on local](#use-on-local)
@@ -45,13 +46,13 @@
 
 # Demo N Queens
 
-Main view
+Main view, choise n board and simulate the game, if it has been calculated, the answer show in moment
 
 <div align="center">
   <img src="/app/img/demo.png" alt="Demo Queens">
 </div>
 
-Solutions view
+Next view all possible solutions
 
 <div align="center">
   <img src="/app/img/demo_2.png" alt="Demo Queens">
@@ -146,19 +147,7 @@ Time in minutes
   <img src="/app/img/res_1_time.png" alt="15*15 Queens Time">
 </div>
 
-# How to use
-
-## Based on a cookiecutter technique
-
-This microservice has been generated since a cookiecutter development by eocode (me) for this project with the next command 
-
-```bash
-cookiecutter https://github.com/ActivandoIdeas/Cookiecutter-Flask
-```
-
-See the details here: https://github.com/ActivandoIdeas/Cookiecutter-Flask
-
-You can base your next developments on that template or contribute to improve it
+# How it is build?
 
 ## Dependencies
 
@@ -180,15 +169,34 @@ You can base your next developments on that template or contribute to improve it
 * Dockerized (test and development envs)
 * Travis-CI and codecov integration
 * Flask Blueprints
-* Divide envs
+* TDD (Test Driven Development) Testing with 10 n*n and every core part of the app for up coverage
+* Divide envs 
 * Extensible
 * PostgreSQL
-* Testing with 10 n*n and every core part of the app
+* Paginate results for show solutions
+* Web application for view solutions and interact
+* Show list of board with all solutions procesed
+* Simulate n*n boards until 10 minutes
 
 ## Development tools
 
 * Pycharm - IDE
 * Black - Code format
+
+# How to use
+
+## Based on a cookiecutter technique
+
+This microservice has been generated since a cookiecutter development by eocode (me) for this project with the next command 
+
+```bash
+cookiecutter https://github.com/ActivandoIdeas/Cookiecutter-Flask
+```
+
+See the details here: https://github.com/ActivandoIdeas/Cookiecutter-Flask
+
+You can base your next developments on that template or contribute to improve it
+
  
 ```bash
 # Only execute this (keep the code cleen)
