@@ -46,6 +46,7 @@
   - [Prepare enviroments](#prepare-enviroments)
   - [Run tests](#run-tests)
   - [Ejecute coverage report](#ejecute-coverage-report)
+- [To develop](#to-develop)
 - [How to contribute](#how-to-contribute)
 - [License](#license)
 
@@ -355,6 +356,13 @@ coverage run -m pytest
 coverage report
 coverage html
 ```
+
+# To develop
+
+* Improve algorithm
+* Create API (optional)
+* Add production env
+* Configure deploy
 
 # How to contribute
 
