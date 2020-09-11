@@ -20,6 +20,12 @@
 ## Summary<!-- omit in toc -->
 - [Demo N Queens](#demo-n-queens)
 - [The n*n queens problem](#the-nn-queens-problem)
+- [Project solution](#project-solution)
+  - [File structure](#file-structure)
+  - [The algorithm](#the-algorithm)
+  - [Results of algorithm](#results-of-algorithm)
+    - [For 14*14 board](#for-1414-board)
+    - [For 15*15 board](#for-1515-board)
 - [How to use](#how-to-use)
   - [Based on a cookiecutter technique](#based-on-a-cookiecutter-technique)
   - [Dependencies](#dependencies)
@@ -34,12 +40,6 @@
   - [Prepare enviroments](#prepare-enviroments)
   - [Run tests](#run-tests)
   - [Ejecute coverage report](#ejecute-coverage-report)
-- [Project solution](#project-solution)
-  - [File structure](#file-structure)
-  - [The algorithm](#the-algorithm)
-  - [Results of algorithm](#results-of-algorithm)
-    - [For 14*14 board](#for-1414-board)
-    - [For 15*15 board](#for-1515-board)
 - [How to contribute](#how-to-contribute)
 - [License](#license)
 
@@ -66,6 +66,85 @@ Problem details: https://en.wikipedia.org/wiki/Eight_queens_puzzle
 3. Write basic tests that at least verify the number of solutions for a given N match what's online. I recommend using pytest
 4. Docker-ize the solution, so that I can run the code and tests without any assumption of my local setup (including running a postgres instance in docker-compose)
 5. Setup Travis CI (or similar) for your public GitHub repo to run the tests automatically
+
+
+# Project solution
+
+## File structure
+
+* **core** (Flask configurations project)
+  * **envs** (Configuration environments)
+  * **requirements** (Project dependencies)
+  * **extensions** (Instance for access to db in modules)
+  * **img** (Images of project)
+  * **init** (Base config app)
+  * **database** (Settings for SQLAlchemy)
+  * **settings** (Injectable settings in app)
+* **modules** Project modules
+  * **queens** (Main blueprint with clean implementation) 
+    * **algorithms** (Switch algorithm)
+    * **connections** (Utilities for database connection)
+    * **simulation** (Core elements of the project)
+    * **solutions** (Manage results of the algorithm)
+    * **utilities** (Project tilities)
+* **migrations** (Database version app - Don't tracked)
+* **labs** (Codding problem and test solutions to pass in module queens, this folder won't pass for testing)
+* **tests** (Test of project)
+
+## The algorithm
+
+You can see the algorithm in ``modules/queens/algorithms``
+
+This is the solution Number 4, see all solutions in ``labs folder``
+
+```python
+def __n_queens(self, board, col, positions):
+    """Last N Queens Algorithm
+    Development by @eocode
+    Version 4
+    """
+    if col == len(board):
+        self.__solutions.add_solution(
+            board, len(self.__solutions.get_solutions()) + 1
+        )
+        return True
+
+    for row in range(len(board)):
+        if row in positions.keys() and col in positions[row]:
+            apply, values = Queen.attack(row, col, copy.deepcopy(positions))
+            if apply:
+                board[row][col] = 1
+                self.__n_queens(board, col + 1, values)
+                board[row][col] = 0
+```
+
+## Results of algorithm
+
+### For 14*14 board
+
+Test algorithm with n boards > 8
+
+<div align="center">
+  <img src="/app/img/res_2.png" alt="14*15 Queens">
+</div>
+
+Time in minutes
+
+<div align="center">
+  <img src="/app/img/res_2_time.png" alt="14*14 Queens">
+</div>
+
+### For 15*15 board
+
+<div align="center">
+  <img src="/app/img/res_1.png" alt="15*15 Queens">
+</div>
+
+Time in minutes
+
+<div align="center">
+  <img src="/app/img/res_1_time.png" alt="15*15 Queens Time">
+</div>
 
 # How to use
 
@@ -249,84 +328,6 @@ coverage run -m pytest
 coverage report
 coverage html
 ```
-
-# Project solution
-
-## File structure
-
-* **core** (Flask configurations project)
-  * **envs** (Configuration environments)
-  * **requirements** (Project dependencies)
-  * **extensions** (Instance for access to db in modules)
-  * **img** (Images of project)
-  * **init** (Base config app)
-  * **database** (Settings for SQLAlchemy)
-  * **settings** (Injectable settings in app)
-* **modules** Project modules
-  * **queens** (Main blueprint with clean implementation) 
-    * **algorithms** (Switch algorithm)
-    * **connections** (Utilities for database connection)
-    * **simulation** (Core elements of the project)
-    * **solutions** (Manage results of the algorithm)
-    * **utilities** (Project tilities)
-* **migrations** (Database version app - Don't tracked)
-* **labs** (Codding problem and test solutions to pass in module queens, this folder won't pass for testing)
-* **tests** (Test of project)
-
-## The algorithm
-
-You can see the algorithm in ``modules/queens/algorithms``
-
-This is the solution Number 4, see all solutions in ``labs folder``
-
-```python
-def __n_queens(self, board, col, positions):
-    """Last N Queens Algorithm
-    Development by @eocode
-    Version 4
-    """
-    if col == len(board):
-        self.__solutions.add_solution(
-            board, len(self.__solutions.get_solutions()) + 1
-        )
-        return True
-
-    for row in range(len(board)):
-        if row in positions.keys() and col in positions[row]:
-            apply, values = Queen.attack(row, col, copy.deepcopy(positions))
-            if apply:
-                board[row][col] = 1
-                self.__n_queens(board, col + 1, values)
-                board[row][col] = 0
-```
-
-## Results of algorithm
-
-### For 14*14 board
-
-Test algorithm with n boards > 8
-
-<div align="center">
-  <img src="/app/img/res_2.png" alt="14*15 Queens">
-</div>
-
-Time in minutes
-
-<div align="center">
-  <img src="/app/img/res_2_time.png" alt="14*14 Queens">
-</div>
-
-### For 15*15 board
-
-<div align="center">
-  <img src="/app/img/res_1.png" alt="15*15 Queens">
-</div>
-
-Time in minutes
-
-<div align="center">
-  <img src="/app/img/res_1_time.png" alt="15*15 Queens Time">
-</div>
 
 # How to contribute
 
