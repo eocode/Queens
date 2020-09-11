@@ -4,7 +4,6 @@
 
 
 class Queen:
-
     @staticmethod
     def attack(x, y, available):
         if Queen.__safe_xy(x, y, available):

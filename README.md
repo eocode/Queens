@@ -17,15 +17,50 @@
   </p>
 </div>
 
-## Description
+## Summary<!-- omit in toc -->
+- [Demo of the project](#demo-of-the-project)
+- [The n*n queens problem](#the-nn-queens-problem)
+- [How to use](#how-to-use)
+  - [Based on a cookiecutter technique](#based-on-a-cookiecutter-technique)
+  - [Dependencies](#dependencies)
+  - [Features](#features)
+  - [Development tools](#development-tools)
+  - [How to clone](#how-to-clone)
+  - [Development configuration](#development-configuration)
+  - [Use on local](#use-on-local)
+  - [Install app](#install-app)
+  - [Dockerized app](#dockerized-app)
+  - [Run migrations](#run-migrations)
+  - [Prepare enviroments](#prepare-enviroments)
+  - [Run tests](#run-tests)
+  - [Ejecute coverage report](#ejecute-coverage-report)
+- [Project solution](#project-solution)
+  - [File structure](#file-structure)
+  - [The algorithm](#the-algorithm)
+  - [Results of algorithm](#results-of-algorithm)
+    - [For 14*14 board](#for-1414-board)
+    - [For 15*15 board](#for-1515-board)
+- [Preview](#preview)
+  - [How to contribute](#how-to-contribute)
+- [License](#license)
 
-Problem: https://en.wikipedia.org/wiki/Eight_queens_puzzle
+# Demo of the project
+
+<div align="center">
+  <img src="/app/img/demo.png" alt="Demo Queens">
+</div>
+
+# The n*n queens problem
+
+Problem details: https://en.wikipedia.org/wiki/Eight_queens_puzzle
 
 1. Determine all possible solutions for a given N where N ≥ 8 (within 10 mins on a laptop). Bonus points for a higher N where N is the size of the board / number of queens
 2. Iterate over N and store the solutions in postgres using SQLAlchemy
 3. Write basic tests that at least verify the number of solutions for a given N match what's online. I recommend using pytest
 4. Docker-ize the solution, so that I can run the code and tests without any assumption of my local setup (including running a postgres instance in docker-compose)
 5. Setup Travis CI (or similar) for your public GitHub repo to run the tests automatically
+
+# How to use
 
 ## Based on a cookiecutter technique
 
@@ -55,18 +90,24 @@ You can base your next developments on that template or contribute to improve it
 
 ## Features
 
-* N Queens Problem
-* Dockerized
+* N Queens Problem algorithm with labs to analyze problem
+* Dockerized (test and development envs)
 * Travis-CI and codecov integration
 * Flask Blueprints
 * Divide envs
 * Extensible
 * PostgreSQL
+* Testing with 10 n*n and every core part of the app
 
 ## Development tools
 
 * Pycharm - IDE
 * Black - Code format
+ 
+```bash
+# Only execute this (keep the code cleen)
+black .
+```
 
 ## How to clone
 
@@ -202,6 +243,8 @@ coverage report
 coverage html
 ```
 
+# Project solution
+
 ## File structure
 
 * **core** (Flask configurations project)
@@ -213,22 +256,72 @@ coverage html
   * **database** (Settings for SQLAlchemy)
   * **settings** (Injectable settings in app)
 * **modules** Project modules
-  * **queens** (Main blueprint Flask module) 
+  * **queens** (Main blueprint with clean implementation) 
+    * **algorithms** (Switch algorithm)
+    * **connections** (Utilities for database connection)
+    * **simulation** (Core elements of the project)
+    * **solutions** (Manage results of the algorithm)
+    * **utilities** (Project tilities)
 * **migrations** (Database version app - Don't tracked)
 * **labs** (Codding problem and test solutions to pass in module queens, this folder won't pass for testing)
 * **tests** (Test of project)
 
+## The algorithm
+
+You can see the algorithm in ``modules/queens/algorithms``
+
+This is the solution Number 4, see all solutions in ``labs folder``
+
+```python
+def __n_queens(self, board, col, positions):
+    """Last N Queens Algorithm
+    Development by @eocode
+    Version 4
+    """
+    if col == len(board):
+        self.__solutions.add_solution(
+            board, len(self.__solutions.get_solutions()) + 1
+        )
+        return True
+
+    for row in range(len(board)):
+        if row in positions.keys() and col in positions[row]:
+            apply, values = Queen.attack(row, col, copy.deepcopy(positions))
+            if apply:
+                board[row][col] = 1
+                self.__n_queens(board, col + 1, values)
+                board[row][col] = 0
+```
+
 ## Results of algorithm
+
+### For 14*14 board
+
+Test algorithm with n boards > 8
+
+<div align="center">
+  <img src="/app/img/res_2.png" alt="14*15 Queens">
+</div>
+
+Time in minutes
+
+<div align="center">
+  <img src="/app/img/res_2_time.png" alt="14*14 Queens">
+</div>
+
+### For 15*15 board
 
 <div align="center">
   <img src="/app/img/res_1.png" alt="15*15 Queens">
 </div>
 
+Time in minutes
+
 <div align="center">
   <img src="/app/img/res_1_time.png" alt="15*15 Queens Time">
 </div>
 
-## Preview
+# Preview
 
 Your image project previews
 

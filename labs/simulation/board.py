@@ -27,7 +27,7 @@ class Board:
     def add_track_solution(self, x, y):
         self.__track_solution += str(x)
         self.__track_solution += str(y)
-        self.__value_track += (x + y)
+        self.__value_track += x + y
 
     def set_track_solution(self, track, value):
         self.__track_solution = track
@@ -102,7 +102,7 @@ class Board:
         self.__solution_id = str(self.board.ravel())
         self.__track_solution += str(x)
         self.__track_solution += str(y)
-        self.__value_track += (x + y)
+        self.__value_track += x + y
 
     def get_board(self):
         return self.board

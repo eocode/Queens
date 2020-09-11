@@ -11,7 +11,6 @@ import copy
 
 
 class NQueens:
-
     def __init__(self):
         self.solutions = Solutions()
 
@@ -26,9 +25,14 @@ class NQueens:
                             if queen.valid_move(board.get_board(), n, row, col):
                                 b = Board(n)
                                 b.set_board(copy.copy(board.get_board()))
-                                b.set_track_solution(copy.copy(board.get_track_solution()),
-                                                     copy.copy(board.get_value_track()))
-                                b.set_safe(copy.copy(board.get_safe_x()), copy.copy(board.get_safe_y()))
+                                b.set_track_solution(
+                                    copy.copy(board.get_track_solution()),
+                                    copy.copy(board.get_value_track()),
+                                )
+                                b.set_safe(
+                                    copy.copy(board.get_safe_x()),
+                                    copy.copy(board.get_safe_y()),
+                                )
                                 b.add_safe(row, col)
                                 b.put_piece(row, col, queen.get_piece_symbol())
                                 solutions.add_solution(b)
@@ -40,18 +44,29 @@ class NQueens:
     @staticmethod
     def solve2(n, solutions):
         for key, board in list(solutions.get_solutions().items()):
-            print(board.get_board(), board.x_values, board.get_value_track(), board.get_track_solution())
+            print(
+                board.get_board(),
+                board.x_values,
+                board.get_value_track(),
+                board.get_track_solution(),
+            )
             for row in board.x_values.keys():
                 for col in list(board.x_values[row].values()):
                     queen = Queen(row, col, row)
-                    apply, new_values = queen.attack(row, col, copy.deepcopy(board.x_values),
-                                                     board.get_safe_queens(),
-                                                     board.n)
+                    apply, new_values = queen.attack(
+                        row,
+                        col,
+                        copy.deepcopy(board.x_values),
+                        board.get_safe_queens(),
+                        board.n,
+                    )
                     if apply:
                         b = Board(n)
                         b.set_board(copy.copy(board.get_board()))
-                        b.set_track_solution(copy.copy(board.get_track_solution()),
-                                             copy.copy(board.get_value_track()))
+                        b.set_track_solution(
+                            copy.copy(board.get_track_solution()),
+                            copy.copy(board.get_value_track()),
+                        )
                         b.set_safe_board(new_values)
                         b.add_safe(row, col)
                         b.put_piece(row, col, queen.get_piece_symbol())
@@ -150,7 +165,7 @@ class NQueens:
                 # print("Tree", row, col)
                 apply, values = Queen_2.attack(row, col, copy.deepcopy(positions))
                 if apply:
-                    print(board)
+                    # print(board)
                     board[row][col] = 1
                     self.n_queens_2(board, col + 1, values)
                     board[row][col] = 0

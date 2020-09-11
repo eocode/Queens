@@ -24,7 +24,7 @@ class Simulation:
             board.add_safe(i, 0)
             self.solutions.add_solution(board)
 
-        for a in (range(self.n - 1)):
+        for a in range(self.n - 1):
             self.solutions = NQueens.solve(self.n, self.solutions)
             print(len(self.solutions.get_solutions()))
 
@@ -46,7 +46,9 @@ class Simulation:
             board.put_piece(i, 0, 1)
             board.set_solution_id()
             board.add_safe(i, 0)
-            board.x_values = {v: {c: c for c in range(1, self.n)} for v in range(self.n)}
+            board.x_values = {
+                v: {c: c for c in range(1, self.n)} for v in range(self.n)
+            }
             board.x_values.pop(i)
             for j, k in board.x_values.items():
                 if j > i:
@@ -62,7 +64,9 @@ class Simulation:
             board = Board_2(self.n)
             board.put_piece(i, 0, 1)
             board.add_safe(i, 0)
-            board.x_values = {v: {c: c for c in range(1, self.n)} for v in range(self.n)}
+            board.x_values = {
+                v: {c: c for c in range(1, self.n)} for v in range(self.n)
+            }
             board.x_values.pop(i)
             for j, k in board.x_values.items():
                 # Right up

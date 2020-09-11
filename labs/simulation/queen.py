@@ -4,7 +4,6 @@
 
 
 class Queen:
-
     def __init__(self, x, y, number):
         self.number = number
         self.x = x

@@ -5,7 +5,7 @@ Initialized app
 from flask import Flask
 from modules.queens.views import queens_view
 from dotenv import load_dotenv
-from .extensions import db
+from app.extensions import db
 from flask_migrate import Migrate
 from flask_bootstrap import Bootstrap
 

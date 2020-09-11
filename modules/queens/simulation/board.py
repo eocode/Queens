@@ -1,23 +1,29 @@
 """
     Create NxN board to solve
+    Use numpy for manage board matrix
 """
 import numpy as np
 
 
 class Board:
+    """Board Class"""
+
     def __init__(self, n):
         self.n = n
-        self.board = np.zeros((n, n))
-        self.safe_queens = 0
+        self.__board = np.zeros((self.n, self.n))
+        self.__positions = {v: {c: c for c in range(0, self.n)} for v in range(self.n)}
 
-    def all_queens_are_safe(self):
-        return self.n == self.safe_queens
+    def create_board(self):
+        """Create numpy array as a bord chess n*n"""
+        self.__board = np.zeros((self.n, self.n))
 
-    def lock_box(self):
-        return False
-
-    def put_piece(self, position, piece):
-        self.board[position][0] = piece
+    def create_positions(self):
+        """Generate dictionary with available positions of game"""
+        self.__positions = {v: {c: c for c in range(0, self.n)} for v in range(self.n)}
 
     def get_board(self):
-        return self.board
+        """Return generated board"""
+        return self.__board
+
+    def get_positions(self):
+        return self.__positions

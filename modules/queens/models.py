@@ -8,10 +8,10 @@ from sqlalchemy import ForeignKey
 from sqlalchemy.orm import relationship
 
 
-class Game(db.Model):
-    """Game app for n cases"""
+class Simulation(db.Model):
+    """Simulation model for n cases"""
 
-    __tablename__ = "games"
+    __tablename__ = "simulations"
     id = Column(Integer, primary_key=True, doc="It's the n board or queen")
     solutions = Column(Integer, doc="Number of solutions found")
     board = Column(Text)
@@ -32,12 +32,13 @@ class Solution(db.Model):
     __tablename__ = "solutions"
 
     id = Column(Integer, primary_key=True)
-    game_id = Column(Integer, ForeignKey("games.id"))
-    game = relationship("Game", back_populates="solved")
+    simulation_id = Column(Integer, ForeignKey("simulations.id"))
+    simulation = relationship("Simulation", back_populates="solved")
     solution = Column(Text, doc="Json with the solution")
+    solution_number = Column(Integer, doc="Number of solution")
 
-    def __init__(self, game_id, solution):
-        self.game_id = game_id
+    def __init__(self, simulation_id, solution):
+        self.simulation_id = simulation_id
         self.solution = solution
 
     def __repr__(self):
