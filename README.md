@@ -5,15 +5,19 @@
     Solve N Queens Puzzle
   </p>
   <p align="center">
-    <a href="https://github.com/eocode/Queens/blob/master/LICENSE">
+    <a href="https://github.com/eocode/Queens/blob/master/LICENSE" target="__blank">
       	<img src="https://img.shields.io/badge/License-BSD3-blue.svg"  alt="license badge"/>
     </a>
-    <a href="https://travis-ci.org/eocode/Queens">
+    <a href="https://travis-ci.org/eocode/Queens" target="__blank">
         <img src="https://img.shields.io/travis/eocode/Queens.svg?label=flask-queens" alt="Build Status">
     </a>
-    <a href="https://codecov.io/gh/eocode/Queens">
+    <a href="https://codecov.io/gh/eocode/Queens" target="__blank">
         <img src="https://codecov.io/gh/eocode/Queens/branch/master/graph/badge.svg" />
     </a>
+    <a href="https://github.com/ambv/black" target="__blank">
+        <img src="https://img.shields.io/badge/code%20style-black-000000.svg" />
+    </a>
+    <img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/eocode/Queens">
   </p>
 </div>
 
@@ -29,10 +33,10 @@
 - [How it is build?](#how-it-is-build)
   - [Dependencies](#dependencies)
   - [Features](#features)
-  - [Development tools](#development-tools)
+  - [Development](#development)
 - [Considerations](#considerations)
+- [Cookiecutter](#cookiecutter)
 - [How to use](#how-to-use)
-  - [Based on a cookiecutter technique](#based-on-a-cookiecutter-technique)
   - [How to clone](#how-to-clone)
   - [Development configuration](#development-configuration)
   - [Use on local](#use-on-local)
@@ -94,7 +98,11 @@ Problem details: https://en.wikipedia.org/wiki/Eight_queens_puzzle
     * **connections** (Utilities for database connection)
     * **simulation** (Core elements of the project)
     * **solutions** (Manage results of the algorithm)
-    * **utilities** (Project tilities)
+    * **utilities** (Project utilities)
+    * **templates** (Project templates)
+    * views
+    * models
+    * forms
 * **migrations** (Database version app - Don't tracked)
 * **labs** (Codding problem and test solutions to pass in module queens, this folder won't pass for testing)
 * **tests** (Test of project)
@@ -185,7 +193,7 @@ Time in minutes
 * Show list of board with all solutions procesed
 * Simulate n*n boards until 10 minutes
 
-## Development tools
+## Development
 
 * Pycharm - IDE
 * Black - Code format
@@ -194,9 +202,7 @@ Time in minutes
 
 * Coverage > 85%
 
-# How to use
-
-## Based on a cookiecutter technique
+# Cookiecutter
 
 This microservice has been generated since a cookiecutter development by eocode (me) for this project with the next command 
 
@@ -213,6 +219,8 @@ You can base your next developments on that template or contribute to improve it
 # Only execute this (keep the code cleen)
 black .
 ```
+
+# How to use
 
 ## How to clone
 
