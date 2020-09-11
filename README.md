@@ -39,7 +39,7 @@ Problem details: https://en.wikipedia.org/wiki/Eight_queens_puzzle
   - [Dependencies](#dependencies)
   - [Features](#features)
   - [Development](#development)
-- [Considerations](#considerations)
+    - [Considerations](#considerations)
 - [Cookiecutter](#cookiecutter)
 - [How to use](#how-to-use)
   - [How to clone](#how-to-clone)
@@ -198,9 +198,11 @@ Time in minutes
 ## Development
 
 * Pycharm - IDE
-* Black - Code format
+* Black - Code style
+* Conventional commits - https://www.conventionalcommits.org/en/v1.0.0/
+* Full documented app
 
-# Considerations
+### Considerations
 
 * Coverage > 85%
 
